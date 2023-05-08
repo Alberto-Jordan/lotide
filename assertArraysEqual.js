@@ -1,25 +1,16 @@
-const eqArrays = function(array1, array2) {
-  if (array1.length !== array2.length) {
-    return false;
-  }
-  for (let i = 0; i < array1.length; i++) {
-    if (array1[i] !== array2[i]) {
-      return false;
-    }
-  }
-  return true;
-};
+const middle = function(arr) {
+  let middleElements = [];
+  const middleIndex = Math.floor(arr.length / 2);
 
-const assertArraysEqual = function(actual, expected) {
-  if (eqArrays(actual, expected)) {
-    console.log(`✅ Assertion Passed: ${actual} === ${expected}`);
+  if (arr.length <= 2) {
+    return middleElements;
+  } else if (arr.length % 2 === 0) {
+    middleElements.push(arr[middleIndex - 1], arr[middleIndex]);
   } else {
-    console.log(`🛑 Assertion Failed: ${actual} !== ${expected}`);
+    middleElements.push(arr[middleIndex]);
   }
+
+  return middleElements;
 };
 
-assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true);
-assertEqual(eqArrays([1, 2, 3], [3, 2, 1]), false);
-assertEqual(eqArrays(["1", "2", "3"], ["1", "2", "3"]), true);
-assertEqual(eqArrays(["1", "2", "3"], ["1", "2", 3]), false);
-
+module.exports = middle;
